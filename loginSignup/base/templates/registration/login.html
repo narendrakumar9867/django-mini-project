@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="shadow-wrap">
+    <div class="form-wrap">
+        <h3>Login</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div>
+                {{ form.username.label_tag }} {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+            <div>
+                {{ form.password.label_tag }} {{ form.password }}
+                {{ form.password.errors }}
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="signup-wrap">
+            <span>Don't have an account?</span>
+            <a class="signup-link" href="{% url 'base:authView' %}">Signup</a>
+        </div>
+        <div class="signup-wrap">
+            <p><a href="{% url 'base:forget_password' %}">Forget your password?</a></p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
